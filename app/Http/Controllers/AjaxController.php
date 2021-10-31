@@ -42,6 +42,6 @@ class AjaxController extends Controller
             'mainid' => $request->mainid
         ]);
 
-        return response()->json(['success'=>'Got Simple Ajax Request.']);
+        // return response()->json(['success'=>'Got Simple Ajax Request.']);
     }
 }

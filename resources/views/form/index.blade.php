@@ -23,38 +23,31 @@
                     <div class="modal-content">
                         
                         <div class="registration-form">
+                            <!-- <span id="error" style="display: none"></span> -->
                             <form>
-                            <!-- <form action="{{ route('patients.store') }}" method="post" id="form-id"> -->
                                 @csrf
                                 
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="fname" 
-                                        value="{{ old('fname') }}" placeholder="نام">
-                                    @error('fname')
-                                        <div class="input-error-validation">
+                                        value="{{ old('fname') }}" placeholder="نام" id="fname">
+                                    <!-- @error('fname')
+                                        <div class="input-error-validation" id="fname">
                                             <strong style="color:red;">{{ $message }}</strong>
                                         </div>
-                                    @enderror
+                                    @enderror -->
+                                    <span id="fnameErr" style="display: none; color: red;"></span>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="lname" 
                                         value="{{ old('lname') }}" placeholder="نام خانوادگی">
-                                    @error('lname')
-                                        <div class="input-error-validation">
-                                            <strong style="color:red;">{{ $message }}</strong>
-                                        </div>
-                                    @enderror
+                                    <span id="lnameErr" style="display: none; color: red;"></span>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="nationalcode" 
                                         value="{{ old('nationalcode') }}" placeholder="کد ملی">
-                                    @error('nationalcode')
-                                        <div class="input-error-validation">
-                                            <strong style="color:red;">{{ $message }}</strong>
-                                        </div>
-                                    @enderror
+                                    <span id="nationalcodeErr" style="display: none; color: red;"></span>
                                 </div>
 
                                 <div class="form-group">
@@ -82,11 +75,7 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="age" 
                                         value="{{ old('age') }}" placeholder="سن">
-                                    @error('age')
-                                        <div class="input-error-validation">
-                                            <strong style="color:red;">{{ $message }}</strong>
-                                        </div>
-                                    @enderror
+                                    <span id="error" style="display: none; color: red;"></span>
                                 </div>
 
                                 <div class="form-group">
@@ -114,21 +103,13 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="mobile" 
                                         value="{{ old('mobile') }}" placeholder="موبایل">
-                                    @error('mobile')
-                                        <div class="input-error-validation">
-                                            <strong style="color:red;">{{ $message }}</strong>
-                                        </div>
-                                    @enderror
+                                    <span id="error" style="display: none; color: red;"></span>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="users_id" 
                                         value="{{ old('users_id') }}" placeholder="شناسه ی کاربری">
-                                    @error('users_id')
-                                        <div class="input-error-validation">
-                                            <strong style="color:red;">{{ $message }}</strong>
-                                        </div>
-                                    @enderror
+                                    <span id="error" style="display: none; color: red;"></span>
                                 </div>
 
                                 <div class="form-group">
@@ -180,11 +161,8 @@
             
             $("#register").click(function(e){             
                 e.preventDefault();                
-                var fname = $("input[name=fname]").val();
-                if(fname.val == null){
-                    alert("فیلد نام خالیست.")
-                }               
-                var lname = $("input[name=lname]").val();  
+                var fname = $("input[name=fname]").val();                                                             
+                var lname = $("input[name=lname]").val();                   
                 var nationalcode = $("input[name=nationalcode]").val();              
                 var sex = $("input[name=sex]").val();        
                 var age = $("input[name=age]").val();        
@@ -192,6 +170,34 @@
                 var mobile = $("input[name=mobile]").val();               
                 var users_id = $("input[name=users_id]").val();        
                 var mainid = $("input[name=mainid]").val();    
+
+                if(fname == ""){
+                    $("#fnameErr").fadeIn().text("لطفا فیلد نام را پر نمایید!");
+                    $("input#fname").focus();
+                    return false;
+                } 
+
+                if(lname == ""){
+                    $("#lnameErr").fadeIn().text("لطفا فیلد نام خانوادگی را پر نمایید!");
+                    $("input#lname").focus();
+                    return false;
+                }
+
+                if(nationalcode == ""){
+                    $("#nationalcodeErr").fadeIn().text("لطفا فیلد کد ملی را پر نمایید!");
+                    $("input#lname").focus();
+                    return false;
+                }
+
+                
+
+                // if(fname.length > 1){
+                //     $("#fname")
+                // }
+
+                // if(fname == ""){
+                //     $("#error").fadeIn().text("Name required.");
+                // }
         
                 var data = {
                         fname:fname, 
