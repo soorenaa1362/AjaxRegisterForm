@@ -21,8 +21,14 @@ Route::get('/', function () {
 
 Route::resource('patients', PatientController::class);
 
+// نمایش فرم ورود اطلاعات و ذخیره آنها در پایگاه داده
 Route::get('patients', [AjaxController::class, 'ajaxRequest']);
 Route::post('ajaxRequest', [AjaxController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+
+// دریافت اطلاعات یک سطر از اطلاعات ذخیره شده در پایگاه داده
+Route::get('getData/{id}', [AjaxController::class, 'getData']);
+Route::get('/patient/show', 'AjaxController@show');
+
 
 
 

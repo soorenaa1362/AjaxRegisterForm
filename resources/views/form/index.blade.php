@@ -208,6 +208,8 @@
                     mainid:mainid
                 };
 
+                alert(nationalcode);
+
                 if(fname != '' && lname != '' && nationalcode != '' && sex != '' && age != '' && married != '' && mobile != '' && users_id != '' && mainid != ''){                   
                     $.ajax({
                         type:'POST',        

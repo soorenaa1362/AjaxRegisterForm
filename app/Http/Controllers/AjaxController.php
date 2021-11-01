@@ -27,7 +27,8 @@ class AjaxController extends Controller
             'lname' => 'required|max:50',
             'nationalcode' => 'required|numeric|min:10',
             'age' => 'required|max:3',
-            'mobile' => 'required|min:11|max:11',            
+            'mobile' => 'required|min:11|max:11',
+            // 'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11'            
         ]);
 
         Patient::create([
@@ -44,4 +45,20 @@ class AjaxController extends Controller
 
         return response()->json(['success'=>'اطلاعات با موفقیت ذخیره شد.']);
     }
+
+
+    public function getData($id)
+    {
+        // if($id == 0){
+        //     $arr['data'] = Patient::orderBy('id', 'asc')->get(); 
+        // }else{
+        //     $arr['data'] = Patient::where('id', $id)->first();
+        // }
+        // echo json_encode($arr);
+        // exit;
+
+        $patient = Patient::find($id);
+        return view('form.show', compact('patient'));
+    }
+
 }
