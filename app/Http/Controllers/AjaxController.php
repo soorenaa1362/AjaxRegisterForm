@@ -22,13 +22,13 @@ class AjaxController extends Controller
         // Log::info($input);     
         // return response()->json(['success'=>'Got Simple Ajax Request.']);
 
-        // $request->validate([
-        //     'fname' => 'required|max:50',
-        //     'lname' => 'required|max:50',
-        //     'nationalcode' => 'required|numeric|min:10',
-        //     'age' => 'required|max:3',
-        //     'mobile' => 'required|min:11|max:11',            
-        // ]);
+        $request->validate([
+            'fname' => 'required|max:50',
+            'lname' => 'required|max:50',
+            'nationalcode' => 'required|numeric|min:10',
+            'age' => 'required|max:3',
+            'mobile' => 'required|min:11|max:11',            
+        ]);
 
         Patient::create([
             'fname' => $request->fname,

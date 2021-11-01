@@ -45,13 +45,13 @@
                                         value="{{ old('nationalcode') }}" placeholder="کد ملی">                                    
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group">                                    
                                     <label class="col-sm-3 col-form-label">جنسیت</label>
                                     <div class="col-sm-4">
                                         <div class="form-check">
                                             <label class="form-check-label">
                                             <input type="radio" class="form-check-input" 
-                                                name="sex" id="membershipRadios1" value="0" checked="">
+                                                name="sex" id="membershipRadios1" value="0" checked>
                                             مرد
                                             <i class="input-helper"></i></label>
                                         </div>
@@ -79,7 +79,7 @@
                                         <div class="form-check">
                                             <label class="form-check-label">
                                             <input type="radio" class="form-check-input" 
-                                                name="married" id="membershipRadios1" value="0" checked="">
+                                                name="married" id="membershipRadios1" value="0" checked>
                                             خیر
                                             <i class="input-helper"></i></label>
                                         </div>
@@ -108,8 +108,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="MainId">MainId</label>
-                                    <select class="form-control" id="mainid" name="mainid">
+                                    <label for="MainId">شخص</label>
+                                    <select class="form-control mainid" id="mainid" name="mainid">
                                         <option value="1">خودم</option>
                                         <option value="2">مادر</option>
                                         <option value="3">پدر</option>
@@ -151,12 +151,12 @@
                 var fname = $("input[name=fname]").val();                                                             
                 var lname = $("input[name=lname]").val();                   
                 var nationalcode = $("input[name=nationalcode]").val();              
-                var sex = $("input[name=sex]").val();        
+                var sex = $("input:radio[name=sex]:checked").val()        
                 var age = $("input[name=age]").val();        
-                var married = $("input[name=married]").val(); 
+                var married = $("input:radio[name=married]:checked").val();
                 var mobile = $("input[name=mobile]").val();               
                 var users_id = $("input[name=users_id]").val();        
-                var mainid = $("input[name=mainid]").val(); 
+                var mainid = $(".mainid").val(); 
                 
                 // Empty Field validate
                 if(fname == ''){
@@ -208,8 +208,7 @@
                     mainid:mainid
                 };
 
-                if(fname != '' && lname != '' && nationalcode != '' && age != '' && mobile != '' && users_id != ''){                   
-                    alert('dasfd');
+                if(fname != '' && lname != '' && nationalcode != '' && sex != '' && age != '' && married != '' && mobile != '' && users_id != '' && mainid != ''){                   
                     $.ajax({
                         type:'POST',        
                         dataType:'json', 

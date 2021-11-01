@@ -22,6 +22,7 @@ class PatientController extends Controller
     
     public function store(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'fname' => 'required|max:50',
             'lname' => 'required|max:50',
