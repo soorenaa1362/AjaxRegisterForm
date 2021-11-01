@@ -43,7 +43,5 @@ class AjaxController extends Controller
         ]);
 
         return response()->json(['success'=>'اطلاعات با موفقیت ذخیره شد.']);
-
-        return redirect()->back();
     }
 }

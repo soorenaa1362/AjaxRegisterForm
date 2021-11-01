@@ -28,26 +28,21 @@
                                 @csrf
                                 
                                 <div class="form-group">
+                                    <span id="alert-fname" class="text-danger" style="font-size:12px;"></span>
                                     <input type="text" class="form-control item" name="fname" 
-                                        value="{{ old('fname') }}" placeholder="نام" id="fname">
-                                    <!-- @error('fname')
-                                        <div class="input-error-validation" id="fname">
-                                            <strong style="color:red;">{{ $message }}</strong>
-                                        </div>
-                                    @enderror -->
-                                    <span id="fnameErr" style="display: none; color: red;"></span>
+                                        value="{{ old('fname') }}" placeholder="نام" id="fname">                                    
                                 </div>
 
                                 <div class="form-group">
+                                    <span id="alert-lname" class="text-danger" style="font-size:12px;"></span>
                                     <input type="text" class="form-control item" name="lname" 
-                                        value="{{ old('lname') }}" placeholder="نام خانوادگی">
-                                    <span id="lnameErr" style="display: none; color: red;"></span>
+                                        value="{{ old('lname') }}" placeholder="نام خانوادگی">                                    
                                 </div>
 
                                 <div class="form-group">
+                                    <span id="alert-nationalcode" class="text-danger" style="font-size:12px;"></span>
                                     <input type="text" class="form-control item" name="nationalcode" 
-                                        value="{{ old('nationalcode') }}" placeholder="کد ملی">
-                                    <span id="nationalcodeErr" style="display: none; color: red;"></span>
+                                        value="{{ old('nationalcode') }}" placeholder="کد ملی">                                    
                                 </div>
 
                                 <div class="form-group">
@@ -73,9 +68,9 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <span id="alert-age" class="text-danger" style="font-size:12px;"></span>
                                     <input type="text" class="form-control item" name="age" 
-                                        value="{{ old('age') }}" placeholder="سن">
-                                    <span id="error" style="display: none; color: red;"></span>
+                                        value="{{ old('age') }}" placeholder="سن">                                    
                                 </div>
 
                                 <div class="form-group">
@@ -101,15 +96,15 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <span id="alert-mobile" class="text-danger" style="font-size:12px;"></span>
                                     <input type="text" class="form-control item" name="mobile" 
-                                        value="{{ old('mobile') }}" placeholder="موبایل">
-                                    <span id="error" style="display: none; color: red;"></span>
+                                        value="{{ old('mobile') }}" placeholder="موبایل">                                    
                                 </div>
 
                                 <div class="form-group">
+                                    <span id="alert-users_id" class="text-danger" style="font-size:12px;"></span>
                                     <input type="text" class="form-control item" name="users_id" 
-                                        value="{{ old('users_id') }}" placeholder="شناسه ی کاربری">
-                                    <span id="error" style="display: none; color: red;"></span>
+                                        value="{{ old('users_id') }}" placeholder="شناسه ی کاربری">                                    
                                 </div>
 
                                 <div class="form-group">
@@ -140,15 +135,7 @@
 
         <!-- Modal -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-        <!-- Form -->
-        <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script> -->
-        <!-- <script src="{{ asset('assets/js/script.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery.js') }}"></script> -->
-
-        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>        
 
 
         <script type="text/javascript">
@@ -169,58 +156,70 @@
                 var married = $("input[name=married]").val(); 
                 var mobile = $("input[name=mobile]").val();               
                 var users_id = $("input[name=users_id]").val();        
-                var mainid = $("input[name=mainid]").val();    
-
-                if(fname == ""){
-                    $("#fnameErr").fadeIn().text("لطفا فیلد نام را پر نمایید!");
-                    $("input#fname").focus();
-                    return false;
-                } 
-
-                if(lname == ""){
-                    $("#lnameErr").fadeIn().text("لطفا فیلد نام خانوادگی را پر نمایید!");
-                    $("input#lname").focus();
-                    return false;
-                }
-
-                if(nationalcode == ""){
-                    $("#nationalcodeErr").fadeIn().text("لطفا فیلد کد ملی را پر نمایید!");
-                    $("input#lname").focus();
-                    return false;
-                }
-
+                var mainid = $("input[name=mainid]").val(); 
                 
+                // Empty Field validate
+                if(fname == ''){
+                    $("#alert-fname").html("لطفا فیلد نام را پر کنید !")
+                }else{
+                    $("#alert-fname").html("")
+                }
 
-                // if(fname.length > 1){
-                //     $("#fname")
-                // }
+                if(lname == ''){
+                    $("#alert-lname").html("لطفا فیلد نام خانوادگی را پر کنید !")
+                }else{
+                    $("#alert-lname").html("")
+                }
 
-                // if(fname == ""){
-                //     $("#error").fadeIn().text("Name required.");
-                // }
+                if(nationalcode == ''){
+                    $("#alert-nationalcode").html("لطفا فیلد کد ملی را پر کنید !")
+                }else{
+                    $("#alert-nationalcode").html("")
+                }
+
+                if(age == ''){
+                    $("#alert-age").html("لطفا فیلد سن را پر کنید !")
+                }else{
+                    $("#alert-age").html("")
+                }
+
+                if(mobile == ''){
+                    $("#alert-mobile").html("لطفا فیلد موبایل را پر کنید !")
+                }else{
+                    $("#alert-mobile").html("")
+                }
+
+                if(users_id == ''){
+                    $("#alert-users_id").html("لطفا فیلد شناسه کاربری را پر کنید !")
+                }else{
+                    $("#alert-users_id").html("")
+                }
         
-                var data = {
-                        fname:fname, 
-                        lname:lname, 
-                        nationalcode:nationalcode, 
-                        sex:sex, 
-                        age:age, 
-                        married:married, 
-                        mobile:mobile, 
-                        users_id:users_id, 
-                        mainid:mainid
-                    };
+                var data = 
+                {
+                    fname:fname, 
+                    lname:lname, 
+                    nationalcode:nationalcode, 
+                    sex:sex, 
+                    age:age, 
+                    married:married, 
+                    mobile:mobile, 
+                    users_id:users_id, 
+                    mainid:mainid
+                };
 
-
-                $.ajax({
-                    type:'POST',        
-                    dataType:'json', 
-                    url:"/ajaxRequest",        
-                    data:data,        
-                    success:function(data){        
-                        alert(data.success);
-                    }        
-                });              
+                if(fname != '' && lname != '' && nationalcode != '' && age != '' && mobile != '' && users_id != ''){                   
+                    alert('dasfd');
+                    $.ajax({
+                        type:'POST',        
+                        dataType:'json', 
+                        url:"/ajaxRequest",        
+                        data:data,        
+                        success:function(data){        
+                            alert(data.success);
+                        }        
+                    }); 
+                }
             });
             
         </script>
@@ -283,10 +282,6 @@
 
     </body>
 </html>
-
-
-
-
 
 
 
